@@ -123,7 +123,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-PmY9lQd9PqLjoIluIq95F5lQEWJglaP5fohDH5sFqR6zskBlh2sweC6Dh2QFpGNb" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <script>
+      let img = document.querySelector("#background-video");
+      console.log(img) 
+      function changeWidth() { 
+        var scrollVal = window.pageYOffset; 
+        var scrollSlow = scrollVal / 8; 
+        img.style.scale = Math.min(Math.max(scrollSlow, 80), 100) + "%"; 
+      } 
+      window.addEventListener( 
+        "scroll", 
+        function () { 
+          requestAnimationFrame(changeWidth); 
+        }, 
+        false 
+      );
+    </script>
     <script>
       $(document).ready(function () {
           // Smooth scroll to the top when clicking on the navbar brand
@@ -329,94 +344,117 @@
     
     </div>
 
+    <div class="modal" id="orderModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Confirm Order</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal Body -->
+          <div class="modal-body">
+            Are you sure you want to order this hoodie?
+          </div>
+    
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="confirmOrderBtn">Confirm</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
       
       
 
-    <!-- JavaScript for Button Interaction -->
-    <script>
-      // Function to fade an element to a target opacity (Method)
-      function fadeToOpacity(targetElement) {
-        var targetOpacity = 0.2;
-        var animationTime = 1000;
+<!-- JavaScript for Button Interaction -->
+<script>
+  // Function to fade an element to a target opacity (Method)
+  function fadeToOpacity(targetElement) {
+    var targetOpacity = 0.2;
+    var animationTime = 1000;
 
-        targetElement.style.transition = `opacity ${animationTime}ms`;
-        targetElement.style.opacity = targetOpacity;
-        targetElement.style.backgroundColor = "red";
-      }
+    targetElement.style.transition = `opacity ${animationTime}ms`;
+    targetElement.style.opacity = targetOpacity;
+    targetElement.style.backgroundColor = "red";
+  }
 
-// Function to play a sound
-function playSound() {
-  const audio = document.getElementById("myAudio");
-  audio.play();
-}
+  // Function to play a sound
+  function playSound() {
+    const audio = document.getElementById("myAudio");
+    audio.play();
+  }
 
+  // Select the "Order" button using a selector
+  const pOrder = document.querySelector(".p-order");
 
-      // Select the "Order" button using a selector
-      const pOrder = document.querySelector(".p-order");
+  // Add a click event listener to the "Order" button
+  pOrder.addEventListener("click", () => {
+    fadeToOpacity(pOrder); // Call the previous function to change opacity
+    playSound(); // Call the playSound function to play the sound
 
-      // Add a click event listener to the "Order" button
-      pOrder.addEventListener("click", () => {
-        fadeToOpacity(pOrder); // Call the previous function to change opacity
-        playSound(); // Call the playSound function to play the sound
-      });
+    // Show the modal box
+    $('#orderModal').modal('show');
+  });
 
-      // Add a hover effect for the "Order" button
-      pOrder.addEventListener("mouseenter", () => {
-        pOrder.style.backgroundColor = "#0056b3";
-      });
+  // Add a hover effect for the "Order" button
+  pOrder.addEventListener("mouseenter", () => {
+    pOrder.style.backgroundColor = "#0056b3";
+  });
 
-      pOrder.addEventListener("mouseleave", () => {
-        pOrder.style.backgroundColor = "#007bff";
-      });
-    </script>
+  pOrder.addEventListener("mouseleave", () => {
+    pOrder.style.backgroundColor = "#007bff";
+  });
+</script>
 
-    <!-- Add the mouse direction code here -->
-    <script>
-      function getDirection(element, event) {
-        let bg2 = document.querySelector(".bg2");
-        let body = document.querySelector("body");
-        let bg2Position = Math.abs(
-          body.getBoundingClientRect().top - bg2.getBoundingClientRect().top
-        );
-        var x = event.pageX - element.offsetLeft;
-        var y = Math.abs(element.offsetTop - event.pageY) - bg2Position;
-        console.log(y, element.offsetHeight / 2);
-        return y < element.offsetHeight / 2 ? 0 : 2;
-      }
+<!-- Add the mouse direction code here -->
+<script>
+  function getDirection(element, event) {
+    let bg2 = document.querySelector(".bg2");
+    let body = document.querySelector("body");
+    let bg2Position = Math.abs(
+      body.getBoundingClientRect().top - bg2.getBoundingClientRect().top
+    );
+    var x = event.pageX - element.offsetLeft;
+    var y = Math.abs(element.offsetTop - event.pageY) - bg2Position;
+    console.log(y, element.offsetHeight / 2);
+    return y < element.offsetHeight / 2 ? 0 : 2;
+  }
 
-      const animatedImage = document.querySelector(".animated-image");
+  const animatedImage = document.querySelector(".animated-image");
 
-      animatedImage.addEventListener("mousemove", (event) => {
-        var direction = getDirection(animatedImage, event);
+  animatedImage.addEventListener("mousemove", (event) => {
+    var direction = getDirection(animatedImage, event);
 
-        if (direction === 0) {
-          
-        } else if (direction === 2) {
-          
-        }
-      });
+    if (direction === 0) {
+      // Handle mouse direction 0
+    } else if (direction === 2) {
+      // Handle mouse direction 2
+    }
+  });
 
+  // JavaScript code to move the text continuously
+  const animationText = document.getElementById("animationText");
+  let position = 0;
 
+  function animateText() {
+    position -= 1;
+    animationText.style.transform = `translateX(${position}px)`;
 
-        //  JavaScript code to move the text continuously
+    if (position < -animationText.offsetWidth) {
+      position = window.innerWidth;
+    }
 
-        const animationText = document.getElementById("animationText");
-        let position = 0;
+    requestAnimationFrame(animateText);
+  }
 
-        function animateText() {
-            position -= 1;
-            animationText.style.transform = `translateX(${position}px)`;
+  animateText();
+</script>
 
-            if (position < -animationText.offsetWidth) {
-                position = window.innerWidth;
-            }
-
-            requestAnimationFrame(animateText);
-        }
-
-        animateText();
-    </script>
+    
 
     </body>
 </html>
