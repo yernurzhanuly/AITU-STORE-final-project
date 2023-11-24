@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="clothing, fashion, online store" />
+    <title>AITU STORE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link id="themeStylesheet" rel="stylesheet" href="light-theme.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0; /* Remove default margin */
+      }
+
+      .fixed-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+      #video-container {
+            position: relative; /* Relative positioning for absolute child elements */
+            width: 100%;
+            height: 100vh; /* Adjust the height as needed */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        #background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire container */
+        }
+
+        .container {
+            position: relative; /* Ensure relative positioning within the video container */
+            z-index: 1; /* Place it above the video */
+        }
+
+      .p-order {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .ex1 {
+        perspective: 1000px;
+      }
+
+      .inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(0) rotateY(0);
+        transition: transform 0.1s;
+      }
+
+      .bg2 {
+        background: #efefef;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .fixed-text-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .animated-container {
+        white-space: nowrap;
+        font-size: 24px;
+        color: #007BFF;
+        display: inline; /* Keep the text in one line */
+      }
+        /* Add your CSS styles here */
+        .animated-container {
+            white-space: nowrap;
+            font-size: 36px;
+            color: #007BFF;
+            background: linear-gradient(90deg, #007BFF, #00FF00, #FF0000); /* Add a gradient background */
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            animation: scrollText 20s linear infinite;
+            font-family: 'Arial', sans-serif; /* Change the font-family here */
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+      
+    </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-PmY9lQd9PqLjoIluIq95F5lQEWJglaP5fohDH5sFqR6zskBlh2sweC6Dh2QFpGNb" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function () {
+          // Smooth scroll to the top when clicking on the navbar brand
+          $(".navbar-brand").click(function () {
+              $("html, body").animate({ scrollTop: 0 }, "slow");
+          });
+
+          // Show dropdown on hover
+          $('.nav-item.dropdown').hover(function () {
+              $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+          }, function () {
+              $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp();
+          });
+
+          // Prevent closing dropdown on clicking inside
+          $('.nav-item.dropdown > a').click(function () {
+              location.href = this.href;
+          });
+      });
+  </script>
+
+  </head>
+
+  <body>
+
+<!-- Navigaton bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-navbar">
+  <div class="container">
+      <a class="navbar-brand" href="#">AITU STORE</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="./Main Page.html">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="./shop.html">Shop</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="./lookbook.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      LookBook
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="./hoodies.html">Hoodies</a>
+                      <a class="dropdown-item" href="./lookbook_tshirts.html">T-Shirts</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Other</a>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="./our contacts.html">Our Contacts</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+      <br>
+
+
+    <!-- JavaScript for User Feedback -->
+    <script>
+      // Function to show a feedback message (Method)
+      function showFeedbackMessage(message, type) {
+        var feedbackDiv = document.createElement("div");
+        feedbackDiv.className = "feedback-message " + type;
+        feedbackDiv.innerText = message;
+        document.body.appendChild(feedbackDiv);
+
+        // Automatically remove the message after a few seconds
+        setTimeout(function () {
+          feedbackDiv.style.display = "none";
+        }, 3000); // 3 seconds
+      }
+
+      // Show the welcome message (Method)
+      showFeedbackMessage("Welcome to our official website!");
+    </script>
+
+    <!-- Grid Container -->
+    <div class="container grid-container">
+      <div class="container"></div>
+
+      <!-- Bootstrap container with the animated image -->
+      <div class="container mt-3">
+        <center>
+          <div class="animated-image">
+            <img
+              src="./footage/Welcome to the official store of AITU.png"
+              width="600px"
+            />
+          </div>
+        </center>
+        <hr />
+      </div>
+
+      <!-- About our store -->
+      <center>
+        <h2 class="blue-text">About Us</h2>
+      </center>
+      <p>
+        <center>
+          We are <em>AITU Clothing Store</em>, your premier destination for
+          high-quality fashion products that redefine style and elegance. Our
+          mission is to offer you a curated selection of clothing and
+          accessories that not only make a statement but also empower you to
+          express your unique personality through fashion
+        </center>
+      </p>
+
+      <hr />
+
+    <!-- Video container -->
+    <div id="video-container">
+      <video id="background-video" autoplay loop muted>
+          <source src="./footage/hoodies.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+
+      <!-- Your content within the video container -->
+      <div class="container mt-3">
+          <center>
+              <h2 class="blue-text">Featured Products</h2>
+          </center>
+          <p>
+              <center>
+                  Check out our latest collection of hoodies. Limited stock available!
+              </center>
+          </p>
+          <!-- Add your other content as needed -->
+      </div>
+  </div>
+
+      <!-- Iframe element -->
+      <center>
+        <iframe src="https://www.youtube.com/embed/your-video-id"></iframe>
+      </center>
+      <hr />
+
+      <div class="container">
+        <!-- Bootstrap Card with resized image -->
+        <div class="card">
+          <center>
+            <img
+              src="./footage/winter-hoodie-sale-banner-design-template-53460097360f6328194e436004e3aa45_screen.jpg"
+              class="card-img-top"
+              alt="Card Image"
+              style="width: 400px; height: 400px"
+            />
+          </center>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title">SPECIAL SALE</h5>
+              <p class="card-text">
+                Special sale for a new collection for the course 2023-2024.
+              </p>
+              <button class="p-order">Order</button>
+            </center>
+          </div>
+        </div>
+
+        <!-- Bootstrap List Group -->
+        <ul class="list-group mt-4">
+          <li class="list-group-item">T-Shirts</li>
+          <li class="list-group-item">Hoodies</li>
+          <li class="list-group-item">Socks</li>
+          <!-- Add more list items as needed -->
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- Contact Information -->
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Our Address</h3>
+            <p>
+              AITU Clothing Store<br />
+              C1.1.2.344L<br />
+              Astana IT University<br />
+              EXPO C1
+            </p>
+          </div>
+          <div class="col-md 6">
+            <h3>Contact Details</h3>
+            <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+            <p><strong>Email:</strong> info@aitustore.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <audio id="myAudio">
+        <source src="./click button.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <div class="animated-container" id="animationText">
+        AITU STORE AITU STORE AITU STORE AITU STORE AITU STORE AITU STORE
+    
+    
+    </div>
+
+
+      
+      
+
+    <!-- JavaScript for Button Interaction -->
+    <script>
+      // Function to fade an element to a target opacity (Method)
+      function fadeToOpacity(targetElement) {
+        var targetOpacity = 0.2;
+        var animationTime = 1000;
+
+        targetElement.style.transition = `opacity ${animationTime}ms`;
+        targetElement.style.opacity = targetOpacity;
+        targetElement.style.backgroundColor = "red";
+      }
+
+// Function to play a sound
+function playSound() {
+  const audio = document.getElementById("myAudio");
+  audio.play();
+}
+
+
+      // Select the "Order" button using a selector
+      const pOrder = document.querySelector(".p-order");
+
+      // Add a click event listener to the "Order" button
+      pOrder.addEventListener("click", () => {
+        fadeToOpacity(pOrder); // Call the previous function to change opacity
+        playSound(); // Call the playSound function to play the sound
+      });
+
+      // Add a hover effect for the "Order" button
+      pOrder.addEventListener("mouseenter", () => {
+        pOrder.style.backgroundColor = "#0056b3";
+      });
+
+      pOrder.addEventListener("mouseleave", () => {
+        pOrder.style.backgroundColor = "#007bff";
+      });
+    </script>
+
+    <!-- Add the mouse direction code here -->
+    <script>
+      function getDirection(element, event) {
+        let bg2 = document.querySelector(".bg2");
+        let body = document.querySelector("body");
+        let bg2Position = Math.abs(
+          body.getBoundingClientRect().top - bg2.getBoundingClientRect().top
+        );
+        var x = event.pageX - element.offsetLeft;
+        var y = Math.abs(element.offsetTop - event.pageY) - bg2Position;
+        console.log(y, element.offsetHeight / 2);
+        return y < element.offsetHeight / 2 ? 0 : 2;
+      }
+
+      const animatedImage = document.querySelector(".animated-image");
+
+      animatedImage.addEventListener("mousemove", (event) => {
+        var direction = getDirection(animatedImage, event);
+
+        if (direction === 0) {
+          
+        } else if (direction === 2) {
+          
+        }
+      });
+
+
+
+        //  JavaScript code to move the text continuously
+
+        const animationText = document.getElementById("animationText");
+        let position = 0;
+
+        function animateText() {
+            position -= 1;
+            animationText.style.transform = `translateX(${position}px)`;
+
+            if (position < -animationText.offsetWidth) {
+                position = window.innerWidth;
+            }
+
+            requestAnimationFrame(animateText);
+        }
+
+        animateText();
+    </script>
+
+        <script>
+        // hoodies
+        $(document).ready(function () {
+            $(".navbar-brand").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            });
+        });
+    </script>
+
+    <!-- End of Container -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

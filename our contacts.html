@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="clothing, fashion, online store">
+    <title>OUR CONTACTS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-PmY9lQd9PqLjoIluIq95F5lQEWJglaP5fohDH5sFqR6zskBlh2sweC6Dh2QFpGNb" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function () {
+                // Smooth scroll to the top when clicking on the navbar brand
+                $(".navbar-brand").click(function () {
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                });
+            });
+        </script>
+    <style>
+        .fixed-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+
+        /* Style the "Show Password" button */
+        #togglePasswordVisibility {
+            background-color: #007BFF;
+            /* Button background color */
+            color: #fff;
+            /* Text color */
+            border: none;
+            border-radius: 4px;
+            /* Rounded corners */
+            padding: 8px 16px;
+            /* Padding inside the button */
+            cursor: pointer;
+            /* Show a hand cursor on hover */
+        }
+
+        /* Style the button on hover */
+        #togglePasswordVisibility:hover {
+            background-color: #0056b3;
+            /* Darker background color on hover */
+        }
+                .quiz {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .categories {
+            display: flex;
+        }
+
+        .category {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .items {
+            display: flex;
+        }
+
+        .item {
+            background-color: #e0e0e0;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .quiz-success-message {
+        background-color: aqua;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+    }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<!-- Bootstrap container -->
+<div class="container mt-3">
+
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">AITU STORE</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./Main Page.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./shop.html">Shop</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role
+                                ="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                Categories
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Hoodies</a>
+                                <a class="dropdown-item" href="#">T-Shirts</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Other</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./our contacts.html">Our Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <hr>
+    <br>
+
+<!-- Registration Form -->
+<form id="registrationForm" action="register" method="post">
+    <h2 class="blue-text">Registration</h2>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+        <span class="error-message" id="usernameError">Please enter a username.</span>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+        <span class="error-message" id="passwordError">Please enter a password (max 10 characters).</span>
+        <button type="button" id="togglePasswordVisibility">Show Password</button>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+        <span class="error-message" id="confirmPasswordError">Please confirm your password (max 10 characters).</span>
+        <span class="error-message" id="passwordMismatchError">Passwords do not match.</span>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="agreeCheckbox">
+        <label for="agreeCheckbox">I agree to the terms and conditions</label>
+    </div>
+
+
+
+    <!-- Submit button for registration initially disabled -->
+    <button type="submit" class="btn btn-primary" id="registerButton" disabled>Register</button>
+    <span id="registrationSuccess" class="text-success"></span>
+</form>
+
+<div class="quiz">
+    <h2>Human Verification Quiz</h2>
+    <p>Drag and drop the correct items into the correct category.</p>
+
+    <div class="categories">
+        <div class="category" id="fruitsCategory">
+            <h3>Fruits</h3>
+        </div>
+        <div class="category" id="vegetablesCategory">
+            <h3>Vegetables</h3>
+        </div>
+    </div>
+
+    <div class="items">
+        <div class="item" id="apple" draggable="true">Apple</div>
+        <div class="item" id="banana" draggable="true">Banana</div>
+        <div class="item" id="cucumber" draggable="true">Cucumber</div>
+        <div class="item" id="carrot" draggable="true">Carrot</div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="resetButton">Reset</button>
+</div>
+
+
+    <span id="quizSuccess" class="text-success"></span>
+
+
+
+
+
+
+
+<!-- JavaScript for Form Validation and Password Toggle -->
+<script>
+    // Function to toggle password visibility
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var toggleButton = document.getElementById("togglePasswordVisibility");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.textContent = "Hide Password";
+        } else {
+            passwordInput.type = "password";
+            toggleButton.textContent = "Show Password";
+        }
+    }
+
+    // Attach an event listener for the password visibility toggle button
+    var toggleButton = document.getElementById("togglePasswordVisibility");
+    toggleButton.addEventListener("click", togglePasswordVisibility);
+
+    // Function to enable or disable the registration button
+    function updateRegisterButton() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        var agreeCheckbox = document.getElementById("agreeCheckbox");
+
+        var registerButton = document.getElementById("registerButton");
+        var usernameError = document.getElementById("usernameError");
+        var passwordError = document.getElementById("passwordError");
+        var confirmPasswordError = document.getElementById("confirmPasswordError");
+        var passwordMismatchError = document.getElementById("passwordMismatchError");
+        var registrationSuccess = document.getElementById("registrationSuccess");
+
+        // Character limits
+        var passwordMaxLength = 10; // Maximum character count for password
+        var confirmPasswordMaxLength = 10; // Maximum character count for confirm password
+
+        // Check character limits and disable the button if exceeded
+        if (password.length > passwordMaxLength) {
+            password = password.substring(0, passwordMaxLength);
+            document.getElementById("password").value = password;
+        }
+        if (confirmPassword.length > confirmPasswordMaxLength) {
+            confirmPassword = confirmPassword.substring(0, confirmPasswordMaxLength);
+            document.getElementById("confirmPassword").value = confirmPassword;
+        }
+
+        if (username && password && confirmPassword && password === confirmPassword && agreeCheckbox.checked) {
+            registerButton.disabled = false;
+            usernameError.style.display = "none";
+            passwordError.style.display = "none";
+            confirmPasswordError.style.display = "none";
+            passwordMismatchError.style.display = "none";
+        } else {
+            registerButton.disabled = true;
+            if (!username) {
+                usernameError.style.display = "inline";
+            } else {
+                usernameError.style.display = "none";
+            }
+            if (!password) {
+                passwordError.style.display = "inline";
+            } else {
+                passwordError.style.display = "none";
+            }
+            if (!confirmPassword) {
+                confirmPasswordError.style.display = "inline";
+            } else {
+                confirmPasswordError.style.display = "none";
+            }
+            if (password !== confirmPassword) {
+                passwordMismatchError.style.display = "inline";
+            } else {
+                passwordMismatchError.style.display = "none";
+            }
+        }
+    }
+
+    // Attach event listeners for input changes
+    var usernameInput = document.getElementById("username");
+    var passwordInput = document.getElementById("password");
+    var confirmPasswordInput = document.getElementById("confirmPassword");
+    var agreeCheckbox = document.getElementById("agreeCheckbox");
+
+    usernameInput.addEventListener("input", updateRegisterButton);
+    passwordInput.addEventListener("input", updateRegisterButton);
+    confirmPasswordInput.addEventListener("input", updateRegisterButton);
+    agreeCheckbox.addEventListener("click", updateRegisterButton);
+
+    // Function to display success message upon registration
+    function displayRegistrationSuccess() {
+        var registrationSuccess = document.getElementById("registrationSuccess");
+        registrationSuccess.innerText = "Registration successful!";
+    }
+
+    // Attach event listener for form submission
+    var registrationForm = document.getElementById("registrationForm");
+    registrationForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting
+        displayRegistrationSuccess();
+    });
+
+// JavaScript for the drag-and-drop quiz
+const initialQuizState = document.querySelector('.quiz').cloneNode(true);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const items = document.querySelectorAll('.item');
+    const categories = document.querySelectorAll('.category');
+
+    items.forEach(item => {
+        item.addEventListener('dragstart', handleDragStart);
+    });
+
+    categories.forEach(category => {
+        category.addEventListener('dragover', handleDragOver);
+        category.addEventListener('drop', handleDrop);
+    });
+
+    function handleDragStart(e) {
+        e.dataTransfer.setData('text/plain', e.target.id);
+    }
+
+    function handleDragOver(e) {
+        e.preventDefault();
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        const item = document.getElementById(e.dataTransfer.getData('text/plain'));
+        const category = e.target;
+
+        if (category.classList.contains('category')) {
+            category.appendChild(item);
+        }
+    }
+});
+
+// Function to reset the quiz
+function resetQuiz() {
+    const items = document.querySelectorAll('.item');
+    const categories = document.querySelectorAll('.category');
+
+    items.forEach(item => {
+        item.setAttribute('draggable', 'true');
+    });
+
+    categories.forEach(category => {
+        category.innerHTML = '';
+    });
+}
+
+// Function to display success message upon registration and hide the quiz
+function displayRegistrationSuccess() {
+    var registrationForm = document.getElementById("registrationForm");
+    registrationForm.style.display = "none";
+    var quizSection = document.querySelector(".quiz");
+    quizSection.style.display = "none"; // Hide the quiz section
+    var quizSuccess = document.getElementById("quizSuccess");
+    quizSuccess.innerText = "Human verification passed. You can now register.";
+    quizSuccess.classList.add("quiz-success-message"); // Apply the CSS class
+}
+    // Attach event listener for form submission
+    var registrationForm = document.getElementById("registrationForm");
+    registrationForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting
+        displayRegistrationSuccess();
+    });
+
+// Attach event listener to the form submit button
+const registerButton = document.getElementById("registerButton");
+registerButton.addEventListener("click", function (event) {
+    const categoryA = document.querySelector('#fruitsCategory');
+    const categoryB = document.querySelector('#vegetablesCategory');
+
+    const item1 = document.querySelector('#apple');
+    const item2 = document.querySelector('#banana');
+    const item3 = document.querySelector('#cucumber');
+    const item4 = document.querySelector('#carrot');
+
+    if (categoryA.contains(item1) && categoryA.contains(item2) && categoryB.contains(item3) && categoryB.contains(item4)) {
+        displayQuizSuccess();
+    } else {
+        alert("Your answer is not correct. Please answer to the quiz.");
+        event.preventDefault(); // Prevent registration if the quiz is not passed
+    }
+});
+
+// Attach event listener to the reset button
+const resetButton = document.getElementById("resetButton");
+resetButton.addEventListener("click", function () {
+    resetQuiz();
+});
+
+</script>
+
+
+
+</html>

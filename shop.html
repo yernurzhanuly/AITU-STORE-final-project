@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="clothing, fashion, online store" />
+    <title>SHOP</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container-mt-3 {
+        text-align: center;
+      }
+      .fixed-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Smooth scroll to the top when clicking on the navbar brand
+        $(".navbar-brand").click(function () {
+          $("html, body").animate({ scrollTop: 0 }, "slow");
+        });
+      });
+    </script>
+  </head>
+  <!-- Bootstrap container -->
+  <div class="container mt-3">
+    <!-- Navigaton bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">AITU STORE</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./Main Page.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./shop.html">Shop</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Hoodies</a>
+                <a class="dropdown-item" href="#">T-Shirts</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">other</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./our contacts.html">Our Contacts</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- To-Do List -->
+    <div class="container-mt-3">
+      <h2>Your cart</h2>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          id="taskInput"
+          class="form-control"
+          placeholder="Enter a new task"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addTask()">
+            Add
+          </button>
+        </div>
+      </div>
+      <ul id="taskList" class="list-group"></ul>
+    </div>
+
+    <!-- JS for To-Do List -->
+    <script>
+      function addTask() {
+        // here i am getting the task by its id
+        var taskInput = document.getElementById("taskInput");
+        // getting trimmed value of the task input
+        var taskText = taskInput.value.trim();
+
+        // Here I Check if the input is empty or only contains whitespace
+        if (taskText === "") {
+          alert("Please enter a task.");
+          return; // This function Exit the function if no task is provided
+        }
+
+        // Creating a list item for the task
+        var taskItem = document.createElement("li");
+        taskItem.className = "list-group-item"; // Bootstrap list item styling
+        taskItem.innerHTML = taskText; // setting the descripton of task
+
+        // Create a "Complete" button for the task
+        var completeButton = document.createElement("button");
+        completeButton.className = "btn btn-success btn-sm"; // Add Bootstrap button styling
+        completeButton.innerHTML = "Complete"; // Button text
+        completeButton.onclick = function () {
+          taskItem.style.textDecoration = "line-through"; // Strikethrough style when completed
+          completeButton.style.display = "none"; // Hide the "Complete" button
+        };
+
+        // Create a "Delete" button for the task
+        var deleteButton = document.createElement("button");
+        deleteButton.className = "btn btn-danger btn-sm ml-2"; // Bootstrap button styling
+        deleteButton.innerHTML = "Delete"; // Button text
+        deleteButton.onclick = function () {
+          taskItem.remove(); // after this function  the task item will "Delete"
+        };
+
+        // here i add buttons like "complete" and "delete"
+        taskItem.appendChild(completeButton);
+        taskItem.appendChild(deleteButton);
+
+        // getting task with id
+        var taskList = document.getElementById("taskList");
+        // добавляем элемент задачи к списку задач
+        taskList.appendChild(taskItem);
+
+        // Clear function
+        taskInput.value = "";
+      }
+    </script>
+
+    <hr />
+    <!-- Tabbed interface -->
+    <div class="container mt-3">
+      <ul class="nav nav-tabs" id="shopTabs" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="productTab"
+            data-toggle="tab"
+            href="#productContent"
+            role="tab"
+            aria-controls="productContent"
+            aria-selected="true"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="specialsTab"
+            data-toggle="tab"
+            href="#specialsContent"
+            role="tab"
+            aria-controls="specialsContent"
+            aria-selected="false"
+            >Specials</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="shopTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="productContent"
+          role="tabpanel"
+          aria-labelledby="productTab"
+        >
+          <center>
+            <h1>SHOP - Products</h1>
+            <!-- Carousel from Bootstrap -->
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <!-- generate carousel items with javascript -->
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </center>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="specialsContent"
+          role="tabpanel"
+          aria-labelledby="specialsTab"
+        >
+          <center>
+            <h1>SHOP - Specials</h1>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALES -->
+    <center>
+      <h2 class="red-text"><strong>SALE: 50% Off All Dresses!</strong></h2>
+    </center>
+
+    <center><img src="./footage/hoodies.jpeg" width="50%" /></center>
+
+    <center>
+      <p>Introducing our <strong>New Arrival Collection</strong>!</p>
+    </center>
+    <hr />
+
+    <!-- Clothing Size chart -->
+    <center>
+      <h2>Clothing Size chart</h2>
+    </center>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>EUR</th>
+          <th>S</th>
+          <th>M</th>
+          <th>L</th>
+          <th>XL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>RUS</th>
+          <th>46</th>
+          <th>48</th>
+          <th>50</th>
+          <th>52</th>
+        </tr>
+        <tr>
+          <th>chest, cm</th>
+          <th>92</th>
+          <th>96</th>
+          <th>100</th>
+          <th>104</th>
+        </tr>
+        <tr>
+          <th>waist, cm</th>
+          <th>80</th>
+          <th>84</th>
+          <th>88</th>
+          <th>92</th>
+        </tr>
+        <tr>
+          <th>hip, cm</th>
+          <th>96.4</th>
+          <th>99</th>
+          <th>101.6</th>
+          <th>104</th>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <!-- Contact Information -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Our Address</h3>
+          <p>
+            AITU Clothing Store<br />
+            C1.1.2.344L<br />
+            Astana IT University<br />
+            EXPO C1
+          </p>
+        </div>
+        <div class="col-md-6">
+          <h3>Contact Details</h3>
+          <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+          <p><strong>Email:</strong> info@aitustore.com</p>
+        </div>
+      </div>
+    </div>
+
+    <script> // JS objects and its properties;
+        const tshirts = [
+          {
+            id: 1,
+            src: "./footage/AITU t shirts/2.png",
+          },
+          {
+            id: 2,
+            src: "./footage/AITU t shirts/3.png",
+          },
+          {
+            id: 3,
+            src: "./footage/AITU t shirts/4.png",
+          },
+        ];
+      
+        const carousel = document.querySelector(".carousel-inner");
+        carousel.innerHTML = ""; // Clear the inner content
+      
+        for (let i = 0; i < tshirts.length; i++) {
+          const carouselItem = document.createElement("div");
+          carouselItem.classList.add("carousel-item");
+      
+          const img = document.createElement("img");
+          img.className = "d-block mx-auto img-fluid";
+          img.src = tshirts[i].src;
+          img.alt = `${tshirts[i].id} slide`;
+      
+          carouselItem.appendChild(img);
+          carousel.appendChild(carouselItem);
+      
+          // Set the first item as "active"
+          if (i === 0) {
+            carouselItem.classList.add("active");
+          }
+        }
+      </script>
+      
+    <!-- Подключение скрипта jQuery Slim -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Подключение скрипта Popper.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Подключение скрипта Bootstrap 4 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Countdown Timer -->
+    <div class="container mt-3">
+      <h2>Set a Countdown Timer</h2>
+      <div>
+        <input
+          type="number"
+          id="timerInput"
+          placeholder="Enter timer duration (seconds)"
+        />
+        <button onclick="startTimer()">Start</button>
+      </div>
+      <div id="countdown" class="mt-3"></div>
+    </div>
+
+    <!-- JS for Countdown Timer -->
+    <script>
+      var countdownInterval;
+
+      function startTimer() {
+        // Get the time the user wants for the countdown
+        var duration = document.getElementById("timerInput").value;
+
+        // Here we check if the user entered a valid number greater than 0
+        if (isNaN(duration) || duration <= 0) {
+          // message if field is empty
+          alert("Please enter a valid timer duration.");
+          return;
+        }
+
+        // by this var we can find part of webpage where counter will shown
+        var countdown = document.getElementById("countdown");
+        countdown.innerText = duration;
+
+        // by this cycle we are updating numbers every second
+        countdownInterval = setInterval(function () {
+          // here we are deacrising the seconds
+          duration--;
+
+          if (duration >= 0) {
+            // When client gonna update the page it will return to 0
+            countdown.innerText = duration;
+          } else {
+            // When time will end it will message us like "time is up"
+            clearInterval(countdownInterval);
+            countdown.innerText = "Time's up!";
+          }
+        }, 1000);
+      }
+
+      
+    </script>
+  </div>
+</html>

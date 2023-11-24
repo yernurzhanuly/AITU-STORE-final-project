@@ -1,0 +1,22 @@
+    .blue-text{
+        color:blue;
+    }
+
+    .red-text{
+        color:red;
+    }
+
+    #main{
+        color: blue;
+    }
+
+    .product-description {
+        padding: 50px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        grid-template-columns: 1 fr 1fr;
+    }
+
